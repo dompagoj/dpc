@@ -1,0 +1,48 @@
+{
+  "name": "rust",
+  "version": "0.0.0",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "napi": {
+    "name": "rust",
+    "triples": {
+      "additional": [
+        "aarch64-apple-darwin",
+        "aarch64-linux-android",
+        "aarch64-unknown-linux-gnu",
+        "aarch64-unknown-linux-musl",
+        "aarch64-pc-windows-msvc",
+        "armv7-unknown-linux-gnueabihf",
+        "x86_64-unknown-linux-musl",
+        "x86_64-unknown-freebsd",
+        "i686-pc-windows-msvc",
+        "armv7-linux-androideabi"
+      ]
+    }
+  },
+  "license": "MIT",
+  "dependencies": {
+    "rewire": "6.0.0",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^2.10.1",
+    "@types/node": "^18.6.1",
+    "@types/rewire": "^2.5.28",
+    "nodemon": "2.0.19",
+    "typescript": "4.7.4"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "scripts": {
+    "build": "napi --dts ../generated.d.ts build ./node_out",
+    "build:release": "napi build --platform --release ./node_out",
+    "prepublishOnly": "napi prepublish -t npm",
+    "build_node": "tsc",
+    "build_node_dev": "nodemon --watch ./src_node -e ts --exec 'npm run build_node'",
+    "build_rust_dev": "nodemon --watch ./src -e rs --exec 'npm run build'",
+    "check_rust_dev": "nodemon --watch ./src -e rs --exec 'cargo check'",
+    "run_node_dev": "tsc && node node_out"
+  }
+}

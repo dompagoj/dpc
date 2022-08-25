@@ -1,0 +1,11 @@
+target
+index.node
+**/node_modules
+**/.DS_Store
+npm-debug.log*
+rust.node
+node_out
+.idea
+.vscode
+generated.d.ts
+tsconfig.tsbuildinfo

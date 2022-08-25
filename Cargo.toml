@@ -1,0 +1,25 @@
+[package]
+edition = "2021"
+name = "rust"
+version = "0.0.0"
+[lib]
+crate-type = ["cdylib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+napi = { version = "2.6.3", features = ["async", "napi8", "serde_json", "tokio_fs", "tokio_rt", "tokio_time"] }
+napi-derive = "2.6.0"
+swc = "0.211.0"
+swc_ecma_transforms_typescript = "0.142.0"
+swc_common = { version = "0.25.0", features=["tty-emitter"] }
+swc_ecma_parser = { version = "0.115.0", features=["typescript"] }
+swc_ecmascript = {version = "0.185.0", features=["codegen", "swc_ecma_transforms", "typescript", "utils", "parser", "typescript-parser"]}
+swc_atoms = "0.3.0"
+swc_ecma_visit = "0.74.1"
+swc_ecma_transforms = "0.180.0"
+clap = { version = "3.1.0", features = ["derive", "wrap_help"] }
+anyhow = "1.0"
+
+[build-dependencies]
+napi-build = "2.0.1"
